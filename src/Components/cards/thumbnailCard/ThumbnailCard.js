@@ -1,15 +1,27 @@
-import "./style.css"
+import { useState } from "react";
+import Modal from "../../modal/Modal";
+import "./style.css";
+import ImageCard from './../imageCard/ImageCard';
+
 function ThumbnailCard(props) {
+	const [openModal, setOpenModal] = useState(false);
 	return (
 		<>
-        <div className="flex">
-			<figure>
-				<img
-					src={props.thumbnailUrl}
-					alt="thumbnail"
-				/>
-			</figure>
-        </div>
+			<div className="thumb-flex">
+				<figure className="thumb" onClick={() => setOpenModal(true)}>
+					<img
+						src={props.thumbnailUrl}
+						alt="thumbnail"
+					/>
+				</figure>
+			</div>
+			<Modal
+				isOpen={openModal}
+				url={props.url}
+				setModalOpen={() => setOpenModal(!openModal)}
+			>
+				<ImageCard url={props.url}/>
+			</Modal>
 		</>
 	);
 }
