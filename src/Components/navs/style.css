@@ -4,6 +4,10 @@
     justify-content: space-between;
     align-items: center;
     min-height: 7.5rem;
+    -webkit-box-shadow: 0px 5px 10px 0pxrgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.35);
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.35);
+    margin-bottom: 2rem;
 }
 
 h1 {
@@ -103,7 +107,11 @@ input:checked~label .hamburguer:after {
         display: block;
         height: 0;
         overflow: hidden;
-        transition: height 0.5s ease-in-out;         
+        transition: height 0.5s ease-in-out;
+        background-color: #fff;
+        -webkit-box-shadow: 0px 5px 5px 0pxrgba(0, 0, 0, 0.35);
+        -moz-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.35);
+        box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.35);
     }
 
     input:checked~ul {
@@ -113,8 +121,9 @@ input:checked~label .hamburguer:after {
     nav {
         position: absolute;
         right: 0;
-        z-index: 1;
+        /* z-index: 1; */
         padding: 2rem;
+
     }
 
     nav ul {
