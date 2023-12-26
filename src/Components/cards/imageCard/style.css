@@ -1,0 +1,10 @@
+.img-flex {
+    display: flex;
+    max-width: 90vw;
+}
+.figure-image-card  {   
+    padding: .5rem;
+}
+.img-imageCard{
+    width: 100%;
+}

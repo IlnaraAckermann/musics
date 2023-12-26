@@ -9,11 +9,11 @@ function Footer() {
         <br />
 
         <a href="https://github.com/IlnaraAckermann" target="_blank"  title="GitHub" rel="noreferrer">        
-          <i className="fab fa-github">GitHub</i>        
+          <i className="icon fab fa-github">GitHub</i>        
         </a>
 
         <a href="https://www.linkedin.com/in/ilnaraackermann" target="_blank" title="LinkedIn" rel="noreferrer">
-          <i className="fab fa-linkedin">LinkedIn</i>      
+          <i className="icon fab fa-linkedin">LinkedIn</i>      
         </a>
       </small>
 
