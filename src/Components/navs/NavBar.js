@@ -18,13 +18,13 @@ function NavBar() {
 					</label>
 					<ul>
 						<li>
-							<a href="/">About</a>
+							<a href="/">Home</a>
 						</li>
 						<li>
 							<a href="/albuns">Albuns</a>
 						</li>
 						<li>
-							<a href="#contact">Contact</a>
+							<a href="/photos">Contact</a>
 						</li>
 					</ul>
 				</nav>
