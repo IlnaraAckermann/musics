@@ -7,7 +7,7 @@ export default function Modal({ isOpen, children, setModalOpen }) {
 			<div className="modal">
 				<div className="modal-content">
 					<button onClick={setModalOpen}>
-						<i class="fa-solid fa-rectangle-xmark"></i>
+						<i className="fa-solid fa-rectangle-xmark"></i>
 					</button>
 					<div>{children}</div>
 				</div>
