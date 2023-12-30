@@ -11,7 +11,7 @@ const AppRouters = () => {
             <Routes>
                 <Route path='/' element={<Home/>}></Route>
                 <Route path='/albuns' element={<AlbumId/>}></Route>
-                <Route path='/photos' element={<AlbumPhotoList/>}></Route>
+                <Route path='/album/:id' element={<AlbumPhotoList/>}></Route>
             </Routes>
         </Router>
      );
