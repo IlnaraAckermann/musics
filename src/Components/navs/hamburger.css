@@ -1,0 +1,60 @@
+
+.header-container .menu {
+    display: none;
+    width: 6rem;
+    height: 6rem;
+    align-self: flex-end;
+}
+
+.header-container nav label {
+    display: flex;
+    flex-direction: column;
+}
+
+.hamburguer {
+    background-color: #000;
+    position: relative;
+    display: block;
+    width: 3rem;
+    height: 0.2rem;
+    top: 2.9rem;
+    left: 1.5rem;
+    transition: 0.5s ease-in-out;
+}
+
+.hamburguer::before,
+.hamburguer::after {
+    background-color: #000;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: 0.2s ease-in-out;
+}
+
+.hamburguer:before {
+    top: -1rem;
+}
+
+.hamburguer:after {
+    bottom: -1rem;
+}
+
+.header-container input {
+    display: none;
+}
+
+.header-container input:checked~label .hamburguer {
+    transform: rotate(45deg);
+}
+
+.header-container input:checked~label .hamburguer:before {
+    transform: rotate(90deg);
+    top: 0;
+}
+
+input:checked~label .hamburguer:after {
+    transform: rotate(90deg);
+    bottom: 0;
+}

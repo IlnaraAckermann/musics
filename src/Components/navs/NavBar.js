@@ -18,13 +18,13 @@ function NavBar() {
 					</label>
 					<ul>
 						<li>
-							<a href="/">Home</a>
+							<a href="/" className="active">Home</a>
 						</li>
 						<li>
 							<a href="/albuns">Albuns</a>
 						</li>
 						<li>
-							<a href="/photos">Contact</a>
+							<a href="/photos">Sincronizar Dados</a>
 						</li>
 					</ul>
 				</nav>
