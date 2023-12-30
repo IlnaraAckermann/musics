@@ -18,7 +18,7 @@ function NavBar() {
 					</label>
 					<ul>
 						<li>
-							<a href="/" className="active">Home</a>
+							<a href="/">Home</a>
 						</li>
 						<li>
 							<a href="/albuns">Albuns</a>
