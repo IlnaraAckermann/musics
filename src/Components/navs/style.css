@@ -18,6 +18,7 @@
     color: coral;
 }
 
+
 .header-container nav,
 .header-container nav ul,
 .header-container nav ul li {
@@ -26,24 +27,28 @@
 }
 
 .header-container nav ul li a {
+    align-self: center;
     font-size: 1.5rem;
     font-weight: 500;
     padding: 1rem 2rem;
     transition: 0.5s;
-    margin: 0;
+    margin: 0 ;
 }
 
-.header-container nav ul li a:hover,
-.header-container nav ul li a.active {
+.header-container nav ul li:hover,
+.header-container nav ul li.active {
     color: #fff;
     background-color: #ff7f50;
 }
 
-.header-container nav ul li a.active {
-    font-weight: 700;
+
+.header-container button {
+    font-size: 1.5rem;
+    padding: 1rem;
+    background-color: #c24d23;
+    color: #fff;
+    font-weight: 500;
 }
-
-
 
 /* hamburger */
 
@@ -55,7 +60,9 @@
     }
 
     .header-container nav ul {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
         height: 0;
         overflow: hidden;
         transition: height 0.5s ease-in-out;
