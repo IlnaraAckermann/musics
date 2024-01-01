@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ApiService from "../services/ApiService";
+import { Link } from "react-router-dom";
 
 const AlbumId = () => {
 	const [albuns, setAlbuns] = useState([]);
@@ -18,13 +19,17 @@ const AlbumId = () => {
 	return (
 		<>
 			<main>
-				<h1>Lista de Albuns</h1>
+				<h1 className="title">Lista de Albuns</h1>
 				<ul className="list-id">
-					{albuns.map((album) => {
+					{albuns.map((album, index) => {
 						const numeroFormatado = String(album.albumId).padStart(3, "0");
-						return <a href={`/album/${album.albumId}`} key={album.id}>
-              <li>AlbumID: {numeroFormatado}</li>
-              </a>
+						return (
+								<Link to={`/album/${album.albumId}`}  key={index} className="album-id">
+							<li>
+									AlbumID: {numeroFormatado}
+							</li>
+								</Link>
+						);
 					})}
 				</ul>
 			</main>
