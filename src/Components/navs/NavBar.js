@@ -34,9 +34,11 @@ export default function NavBar() {
 		try {
 			await ApiService.postUrl(url);
 			window.alert("Dados carregados com sucesso");
-			setDataIsEmpty(false);
+			setDataIsEmpty(false);	
 		} catch (error) {
 			console.error("Erro na requisição:", error.message);
+		} finally {
+			setLoading(false);
 		}
 	};
 
@@ -57,10 +59,19 @@ export default function NavBar() {
 						</div>
 					</label>
 					<ul>
-						<CustonLink to='/'>Home</CustonLink>
-						<CustonLink to='/albuns'>Albuns</CustonLink>
+						<CustonLink to="/">Home</CustonLink>
+						<CustonLink to="/albuns">Albuns</CustonLink>
 						<li className={dataIsEmpty ? "" : "d-none"}>
-							<button onClick={handleClick}>Sincronizar Dados</button>
+							{loading ? (
+								<li>
+									<button onClick={handleClick}>
+										<div className="custom-loader"></div>
+										Sincronizar Dados
+									</button>
+								</li>
+							) : (
+								<button onClick={handleClick}>Sincronizar Dados</button>
+							)}
 						</li>
 					</ul>
 				</nav>
@@ -70,15 +81,16 @@ export default function NavBar() {
 }
 
 function CustonLink({ to, children, ...props }) {
-	const resolvedPath = useResolvedPath(to)
-	const isActive =useMatch({path: resolvedPath.pathname, end:true})
+	const resolvedPath = useResolvedPath(to);
+	const isActive = useMatch({ path: resolvedPath.pathname, end: true });
 	return (
-		<li className={isActive ? 'active':''}>
-			<Link to={to} {...props}>
+		<li className={isActive ? "active" : ""}>
+			<Link
+				to={to}
+				{...props}
+			>
 				{children}
 			</Link>
 		</li>
 	);
 }
-
-
