@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
 }
 
 code {
@@ -13,7 +13,7 @@ code {
     monospace;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   border: none;
@@ -25,24 +25,31 @@ code {
   list-style: none;
 }
 
-main { 
+main {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 1200px; 
+  max-width: 1200px;
   margin: auto;
   flex-wrap: wrap;
+  flex-grow: 1;
+  margin: 3rem auto;
+  justify-content: center;
 }
 
-.list-id{
+.all {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.list-id {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.list-id li{
+.list-id li {
   height: 3.5rem;
-  width: 8rem;
+  width: 9rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,11 +57,56 @@ main {
   border: 1px solid #000;
   border-radius: .3rem;
   transition: all .5s;
-  font-weight: 700;
 }
 
-.list-id li:hover{
+.list-id .album-id {
+  font-weight: 500;
+  
+}
+
+.list-id li:hover {
   background: coral;
   color: white;
   border: 1px solid #f9af6d;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.album-photos {
+  width: 100%;
+  text-align: center;
+}
+
+.album-photos form {
+  margin: 1rem 0;
+  position: relative;
+}
+
+.album-photos form input {
+  width: 80%;
+  font-size: 1.5rem;
+  border: 1px solid #0000008e;
+  padding: .8rem;
+  border-radius: 1.5rem;
+}
+
+.album-photos form button {
+  font-size: 1.5rem;
+  padding: .8rem 2rem;
+  border-radius: 0 1.5rem 1.5rem 0;
+  z-index: 2;
+  margin-left: -5.54rem;
+  background: coral;
+  color: #fff;
+  border: 1px solid #0000008e;
+}
+
+p {
+  padding: 0.5rem 0;
+}
+
+.title{
+  font-weight: 600;
 }

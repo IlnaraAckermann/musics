@@ -6,7 +6,6 @@
     -webkit-box-shadow: 0px 5px 10px 0pxrgba(0, 0, 0, 0.35);
     -moz-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.35);
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.35);
-    margin-bottom: 2rem;
 }
 
 .header-container h1 {
@@ -15,7 +14,7 @@
 }
 
 .header-container a:hover h1 {
-    color: coral;
+    color: #ff7f50;
 }
 
 
@@ -32,7 +31,7 @@
     font-weight: 500;
     padding: 1rem 2rem;
     transition: 0.5s;
-    margin: 0 ;
+    margin: 0;
 }
 
 .header-container nav ul li:hover,
@@ -48,11 +47,26 @@
     background-color: #c24d23;
     color: #fff;
     font-weight: 500;
+    transition: all .5s;
+}
+
+.header-container button:hover {
+    box-shadow: inset;
+    -webkit-box-shadow: inset 0px 0px 15px 0px rgba(223, 56, 5, 0.75);
+    -moz-box-shadow: inset 0px 0px 15px 0px rgba(223, 56, 5, 0.75);
+    box-shadow: inset 0px 0px 15px 0px rgba(223, 56, 5, 0.75);
+}
+.header-container button:active {
+    box-shadow: inset;
+    -webkit-box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 /* hamburger */
 
 @import url(hamburger.css);
+@import url(loader.css);
 
 @media (max-width: 900px) {
     .header-container .menu {
@@ -62,7 +76,7 @@
     .header-container nav ul {
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
+        justify-content: stretch;
         height: 0;
         overflow: hidden;
         transition: height 0.5s ease-in-out;
@@ -79,26 +93,31 @@
 
 
     .header-container input:checked~ul {
-        height: 12rem;
+        height: 13rem;
     }
 
-    .header-container nav {        
+    .header-container nav {
         display: block;
         position: absolute;
         right: 0;
         align-self: center;
-        }
+    }
+    .header-container nav ul button{
+        width: 100%;
+    }
 
     
-    .header-container nav ul a {
+    .header-container nav ul li a {
         text-align: center;
         display: block;
 
     }
 
-    
+
     .header-container nav ul li {
-        display: block;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
     }
 
     .header-container nav ul li a.active {
