@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-
 const BASE_URL = 'http://localhost:8080/api/music';
+const qs = require('qs');
 const ApiService = {
   postUrl: async (param) => {
     try {
-      const response = await axios.post(`${BASE_URL}/url`, { param });
+      const response = await axios.post(`${BASE_URL}/url`,  qs.stringify({ 'url': param }));
       return response.data;
     } catch (error) {
       console.error('Erro ao recuperar os dados da url:', error);
