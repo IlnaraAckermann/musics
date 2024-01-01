@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import ThumbnailCard from "../Components/cards/thumbnailCard/ThumbnailCard";
 import ApiService from "../services/ApiService";
-import { useParams } from 'react-router-dom';
+import { useParams} from "react-router-dom";
 
-const AlbumPhotoList = () => {
+const AlbumPhotoList = ({ navigate }) => {
 	const { id } = useParams();
 	const [photos, setPhotos] = useState([]);
+
+	const [searchId, setSearchId] = useState("");
 
 	useEffect(() => {
 		const fetchPhotos = async () => {
@@ -17,23 +19,43 @@ const AlbumPhotoList = () => {
 			}
 		};
 		fetchPhotos();
-	}, []);
+	}, [id]);
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		if (searchId.toString() !== '') {
+			navigate(`/album/${searchId}`);
+		}
+	};
 
 	return (
 		<>
 			<main>
-			<h1>Lista de fotos do álbum {id} </h1>
-			<div className="list-id">
+				<header className="album-photos">
+					<h1 className="title">Lista de fotos do álbum {id} </h1>
 
-			{photos.map((photo) => (
-				<ThumbnailCard
-					key={photo.id}
-					thumbnailUrl={photo.thumbnailURL}
-					url={photo.url}
-				/>
-			))}
-			</div>
-
+					<form onSubmit={handleSubmit}>
+						<input
+							type="number"
+							value={searchId}
+							onChange={(event) => setSearchId(event.target.value)}
+							placeholder="Digite o ID do álbum"
+						/>
+						<button type="submit">
+							<i className="fa-solid fa-magnifying-glass"></i>
+						</button>
+					</form>
+				</header>
+				{photos.length === 0 && <h2>Album inexistente</h2>}
+				<div className="list-id">
+					{photos.map((photo, index) => (
+						<ThumbnailCard
+							key={index}
+							thumbnailUrl={photo.thumbnailURL}
+							url={photo.url}
+						/>
+					))}
+				</div>
 			</main>
 		</>
 	);
