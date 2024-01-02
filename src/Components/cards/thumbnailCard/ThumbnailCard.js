@@ -17,7 +17,6 @@ function ThumbnailCard(props) {
 			</div>
 			<Modal
 				isOpen={openModal}
-				url={props.url}
 				setModalOpen={() => setOpenModal(!openModal)}
 			>
 				<ImageCard url={props.url}/>
