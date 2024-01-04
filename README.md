@@ -12,3 +12,8 @@ React Router Dom
 Integração com API: Utiliza o Axios para realizar requisições à API em Kotlin.
 Exibição de Dados: Mapeia os dados da API na interface do usuário.
 Sincronização de Dados: Botão para enviar uma URL contendo um JSON para o endpoint responsável por capturar o JSON e persistir os dados no PostgreSQL.
+
+## 🚪BackEnd
+Para o BackEnd Acesse:
+
+https://github.com/IlnaraAckermann/api-rest-music
