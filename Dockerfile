@@ -1,21 +1,24 @@
-FROM node:latest
+# Build
+FROM node:20-alpine as build
 
-WORKDIR /tmp/react
+WORKDIR /app
 
-COPY . .
+ENV PATH /app/node_modules/.bin:$PATH
 
-RUN rm -rf node_modules
+COPY package*.json ./
 
-RUN npm install
+RUN npm ci --silent
+
+COPY . ./
 
 RUN npm run build
 
-RUN mkdir -p /var/www/html
+# Server
+FROM nginx:stable-alpine
 
-RUN mv build/* /var/www/html
+COPY --from=build /app/build /usr/share/nginx/html
+COPY ./docker/nginx.conf /etc/nginx/conf.d/default.conf
 
-VOLUME /var/www/html
+EXPOSE 3000
 
-WORKDIR /
-
-RUN rm -rf /tmp/react
+CMD ["nginx", "-g", "daemon off;"]

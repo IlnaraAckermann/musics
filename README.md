@@ -12,3 +12,20 @@ React Router Dom
 Integração com API: Utiliza o Axios para realizar requisições à API em Kotlin.
 Exibição de Dados: Mapeia os dados da API na interface do usuário.
 Sincronização de Dados: Botão para enviar uma URL contendo um JSON para o endpoint responsável por capturar o JSON e persistir os dados no PostgreSQL.
+
+
+## Como rodar ⚡
+Clone o repositório e instale as dependências:
+```
+cd music
+npm install
+cp .env.example .env # ajuste os valores
+npm run dev`
+```
+
+### Docker 🐋
+Execute os comandos de build e run:
+```
+docker build -t music-app .
+docker run -it --rm -p 3000:3000 music-app
+```
