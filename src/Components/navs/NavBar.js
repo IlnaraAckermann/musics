@@ -57,6 +57,7 @@ export default function NavBar() {
 							<span className="hamburguer" />
 						</div>
 					</label>
+
 					<ul>
 						<CustonLink to="/">Home</CustonLink>
 						<CustonLink
