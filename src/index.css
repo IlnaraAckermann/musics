@@ -1,3 +1,9 @@
+:root {
+  --primary-color: #f31e1e;
+  --secondary-color: #800318;
+  --tertiary-color: #fff;
+  --quaternary-color: #000;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -33,6 +39,7 @@ main {
   flex-grow: 1;
   margin: 3rem auto;
   justify-content: center;
+  padding: 0 1rem;
 }
 
 .all {
@@ -98,9 +105,9 @@ main {
   border-radius: 0 1.5rem 1.5rem 0;
   z-index: 2;
   margin-left: -5.54rem;
-  background: coral;
-  color: #fff;
-  border: 1px solid #0000008e;
+  background:var(--primary-color);
+  color: var(--tertiary-color);
+  border: 1px solid var(--quaternary-color);
 }
 
 p {
