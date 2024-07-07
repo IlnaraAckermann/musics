@@ -1,5 +1,6 @@
 :root {
   --primary-color: #f31e1e;
+  --primary-color-hover: #ff4444;
   --secondary-color: #800318;
   --tertiary-color: #fff;
   --quaternary-color: #000;
@@ -61,7 +62,7 @@ main {
   align-items: center;
   justify-content: center;
   margin: .5rem;
-  border: 1px solid #000;
+  border: 1px solid var(--quaternary-color);
   border-radius: .3rem;
   transition: all .5s;
 }
@@ -72,9 +73,9 @@ main {
 }
 
 .list-id li:hover {
-  background: coral;
-  color: white;
-  border: 1px solid #f9af6d;
+  background: var(--primary-color);
+  color: var(--tertiary-color);
+  border: 1px solid var(--primary-color-hover);
 }
 
 .d-none {
@@ -94,7 +95,7 @@ main {
 .album-photos form input {
   width: 80%;
   font-size: 1.5rem;
-  border: 1px solid #0000008e;
+  border: 1px solid var(--quaternary-color);
   padding: .8rem;
   border-radius: 1.5rem;
 }
