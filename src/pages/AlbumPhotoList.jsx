@@ -6,7 +6,6 @@ import { useParams} from "react-router-dom";
 const AlbumPhotoList = ({ navigate }) => {
 	const { id } = useParams();
 	const [photos, setPhotos] = useState([]);
-
 	const [searchId, setSearchId] = useState("");
 
 	useEffect(() => {
