@@ -31,7 +31,8 @@ const ApiService = {
 			const response = await axios.get(`${BASE_URL}/album/${albumId}`);
 			return response.data;
 		} catch (e) {
-			console.error("Erro ao obter fotos por ID do álbum:", e);
+      console.error("Erro ao obter fotos por ID do álbum:", e);
+      throw new Error("Erro ao obter fotos por ID do álbum");
 		}
 	},
 };
