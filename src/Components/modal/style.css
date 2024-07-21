@@ -16,7 +16,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #fff;
+    background-color: var(--tertiary-color);
     padding: .5rem;
     border-radius: .5rem;
     
@@ -27,7 +27,7 @@
 .modal-content button {
     display: flex;
     background-color: transparent;
-    color: #ff0000;
+    color: var(--primary-color);
     font-size: 2rem;
     z-index: 41;
     align-self: flex-end;

@@ -1,3 +1,11 @@
+:root {
+  --primary-color: #f31e1e;
+  --primary-color-hover: #ff4444;
+  --secondary-color: #800318;
+  --tertiary-color: #fff;
+  --quaternary-color: #000;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,7 +13,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
 
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 code {
@@ -33,12 +47,7 @@ main {
   flex-grow: 1;
   margin: 3rem auto;
   justify-content: center;
-}
-
-.all {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  padding: 0 1rem;
 }
 
 .list-id {
@@ -54,20 +63,20 @@ main {
   align-items: center;
   justify-content: center;
   margin: .5rem;
-  border: 1px solid #000;
+  border: 1px solid var(--quaternary-color);
   border-radius: .3rem;
   transition: all .5s;
 }
 
 .list-id .album-id {
   font-weight: 500;
-  
+
 }
 
 .list-id li:hover {
-  background: coral;
-  color: white;
-  border: 1px solid #f9af6d;
+  background: var(--primary-color);
+  color: var(--tertiary-color);
+  border: 1px solid var(--primary-color-hover);
 }
 
 .d-none {
@@ -87,7 +96,7 @@ main {
 .album-photos form input {
   width: 80%;
   font-size: 1.5rem;
-  border: 1px solid #0000008e;
+  border: 1px solid var(--quaternary-color);
   padding: .8rem;
   border-radius: 1.5rem;
 }
@@ -98,15 +107,15 @@ main {
   border-radius: 0 1.5rem 1.5rem 0;
   z-index: 2;
   margin-left: -5.54rem;
-  background: coral;
-  color: #fff;
-  border: 1px solid #0000008e;
+  background: var(--primary-color);
+  color: var(--tertiary-color);
+  border: 1px solid var(--quaternary-color);
 }
 
 p {
   padding: 0.5rem 0;
 }
 
-.title{
+.title {
   font-weight: 600;
 }

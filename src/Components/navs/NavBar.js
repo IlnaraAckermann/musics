@@ -2,44 +2,43 @@ import React, { useEffect, useState } from "react";
 import ApiService from "../../services/ApiService";
 import "./style.css";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import { useMutation, useQuery } from "react-query";
+const baseUrl = "http://localhost:8080/api/music";
+const url = "https://jsonplaceholder.typicode.com/photos";
 
 export default function NavBar() {
-	const [loading, setLoading] = useState(false);
-	const [dataIsEmpty, setDataIsEmpty] = useState(true);
-	const [albuns, setAlbuns] = useState([]);
+	const postAlbums = () => {
+		return ApiService.postUrl("https://jsonplaceholder.typicode.com/photos");
+	};
 
-	useEffect(() => {
-		const fetchAlbuns = async () => {
-			try {
-				const albunsData = await ApiService.getAlbumIds();
-				setAlbuns(albunsData);
-				if (albunsData.length !== 0) {
-					setDataIsEmpty(false);
-				} else {
-					setDataIsEmpty(true);
-				}
-			} catch (e) {
-				console.error("Erro ao obter os albuns");
-			}
-		};
-		fetchAlbuns();
-	}, [albuns]);
+	const {
+		isLoading: loadingData,
+		error,
+		data,
+		refetch,
+	} = useQuery({
+		queryKey: ["getAlbuns"],
+		queryFn: () =>
+			ApiService.getAlbumIds().then((response) => {
+				return response;
+			}),
+		retry: 1, // retry once on failure
+		refetchOnWindowFocus: false, // do not refetch on window focus
+		refetchOnMount: false, // do not refetch on mount
+	});
+
+	const {
+		mutate: postAlbumsUrl,
+		isLoading: postingData,
+		isError,
+	} = useMutation(postAlbums, {
+		onSuccess: () => {
+			refetch();
+		},
+	});
 
 	const handleClick = async () => {
-		if (loading) {
-			return;
-		}
-		setLoading(true);
-		const url = "https://jsonplaceholder.typicode.com/photos";
-		try {
-			await ApiService.postUrl(url);
-			window.alert("Dados carregados com sucesso");
-			setDataIsEmpty(false);	
-		} catch (error) {
-			console.error("Erro na requisição:", error.message);
-		} finally {
-			setLoading(false);
-		}
+		postAlbumsUrl();
 	};
 
 	return (
@@ -60,17 +59,34 @@ export default function NavBar() {
 					</label>
 					<ul>
 						<CustonLink to="/">Home</CustonLink>
-						<CustonLink to="/albuns">Albuns</CustonLink>
-						<li className={dataIsEmpty ? "" : "d-none"}>
-							{loading ? (
-								<li>
-									<button onClick={handleClick}>
-										<div className="custom-loader"></div>
-										Sincronizar Dados
-									</button>
-								</li>
+						<CustonLink
+							isDataEmpty={!data}
+							to="/albuns"
+						>
+							Albuns
+						</CustonLink>
+						<li className={!data ? "" : "d-none"}>
+							{error ? (
+								<button
+									onClick={refetch}
+									disabled={loadingData || postingData}
+								>
+									{postingData ||
+										(loadingData && <div className="custom-loader"></div>)}
+									Tentar novamente
+									<span style={{ marginLeft: "1ch" }}>
+										<i className="fa-solid fa-redo"></i>
+									</span>
+								</button>
 							) : (
-								<button onClick={handleClick}>Sincronizar Dados</button>
+								<button
+									onClick={handleClick}
+									disabled={loadingData || postingData}
+								>
+									{postingData ||
+										(loadingData && <div className="custom-loader"></div>)}
+									Sincronizar Dados
+								</button>
 							)}
 						</li>
 					</ul>
@@ -80,11 +96,11 @@ export default function NavBar() {
 	);
 }
 
-function CustonLink({ to, children, ...props }) {
+function CustonLink({ to, children, isDataEmpty, ...props }) {
 	const resolvedPath = useResolvedPath(to);
 	const isActive = useMatch({ path: resolvedPath.pathname, end: true });
 	return (
-		<li className={isActive ? "active" : ""}>
+		<li className={isDataEmpty ? "d-none" : isActive ? "active" : ""}>
 			<Link
 				to={to}
 				{...props}
@@ -93,4 +109,10 @@ function CustonLink({ to, children, ...props }) {
 			</Link>
 		</li>
 	);
+}
+
+export const SincButton = () => {
+	return (
+		<div>NavBar</div>
+	)
 }
