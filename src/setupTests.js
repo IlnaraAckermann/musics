@@ -2,4 +2,11 @@
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
+import path from "path";
+
+module.exports = {
+	testMatch: ["**/*.test.js", "**/*.test.jsx"],
+	collectCoverage: true,
+	coverageDirectory: path.join(__dirname, "coverage"),
+};
